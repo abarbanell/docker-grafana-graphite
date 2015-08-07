@@ -1,436 +1,116 @@
 {
   "id": null,
-  "title": "Kamon Dashboard",
-  "originalTitle": "Kamon Dashboard",
-  "tags": [
-    "kamon",
-    "metrics",
-    "actors"
-  ],
-  "style": "dark",
+  "title": "RPYM data",
+  "originalTitle": "RPYM data",
+  "tags": [],
+  "style": "light",
   "timezone": "browser",
   "editable": true,
   "hideControls": false,
   "sharedCrosshair": false,
   "rows": [
     {
-      "title": "Actor Metrics Label",
-      "height": "80px",
+      "title": "New row",
+      "height": "250px",
       "editable": true,
       "collapse": false,
-      "collapsable": true,
       "panels": [
         {
+          "title": "CPU usage",
           "error": false,
           "span": 12,
           "editable": true,
-          "type": "text",
-          "loadingEditor": false,
-          "mode": "markdown",
-          "content": "## Actor Metrics ##",
-          "style": {},
-          "title": "Actor Metrics",
-          "id": 1
-        }
-      ],
-      "notice": false
-    },
-    {
-      "title": "Intro and Processed Count",
-      "height": "350px",
-      "editable": true,
-      "collapse": false,
-      "collapsable": true,
-      "panels": [
-        {
-          "error": false,
-          "span": 3,
-          "editable": true,
-          "type": "text",
-          "loadingEditor": false,
-          "mode": "markdown",
-          "content": "This dashboard gives a simple overview metrics collected by Kamon from your application. By default the pattern in which metrics \nare reported contains the application name (see the application key in kamon-statsd's reference.conf file) and the host name from \nwhich the metrics are being collected. The filters on the upper left side let you select between these two path keys. \n\nFeel free to play with this dashboard, see how the panels are constructed and create your own dashboard according to your needs!",
-          "style": {},
-          "title": "Welcome to the Kamon Example Dashboard!",
-          "id": 2
-        },
-        {
-          "span": 9,
-          "editable": true,
           "type": "graph",
-          "loadingEditor": false,
+          "id": 2,
           "datasource": null,
           "renderer": "flot",
           "x-axis": true,
           "y-axis": true,
-          "scale": 1,
           "y_formats": [
-            "ns",
-            "µs"
+            "percent",
+            "short"
           ],
           "grid": {
-            "max": null,
-            "min": 0,
-            "threshold1": null,
-            "threshold2": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)",
-            "thresholdLine": false,
             "leftMax": null,
             "rightMax": null,
             "leftMin": null,
-            "rightMin": null
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
           },
-          "annotate": {
-            "enable": false
-          },
-          "resolution": 100,
           "lines": true,
           "fill": 0,
-          "linewidth": 2,
+          "linewidth": 1,
           "points": false,
-          "pointradius": 5,
+          "pointradius": 1,
           "bars": false,
           "stack": false,
+          "percentage": false,
           "legend": {
             "show": true,
-            "values": true,
-            "min": true,
-            "max": true,
+            "values": false,
+            "min": false,
+            "max": false,
             "current": false,
             "total": false,
             "avg": false
           },
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "null as zero",
+          "nullPointMode": "connected",
           "steppedLine": false,
           "tooltip": {
             "value_type": "cumulative",
-            "query_as_alias": true,
             "shared": false
           },
           "targets": [
             {
-              "target": "aliasByNode(stats.timers.[[Application]].[[Host]].akka-actor.*.processing-time.upper_99, 5)",
-              "hide": false
+              "target": "stats.gauges.rpi01.cpu.percent"
+            },
+            {
+              "target": "stats.gauges.rpi02.cpu.percent"
+            },
+            {
+              "target": "stats.gauges.rpi03.cpu.percent"
             }
           ],
           "aliasColors": {},
-          "title": "# of Processed Messages per Actor",
-          "leftYAxisLabel": "Message Count",
-          "rightYAxisLabel": "Processing Time",
+          "seriesOverrides": [],
+          "links": []
+        },
+        {
+          "title": "CPU temp [C]",
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "graph",
           "id": 3,
-          "seriesOverrides": [
-            {
-              "alias": "user-simple-service-actor processing time",
-              "yaxis": 2
-            }
-          ]
-        }
-      ],
-      "notice": false
-    },
-    {
-      "title": "Other Stuff",
-      "height": "250px",
-      "editable": true,
-      "collapse": false,
-      "collapsable": true,
-      "panels": [
-        {
-          "span": 6,
-          "editable": true,
-          "type": "graph",
-          "loadingEditor": false,
           "datasource": null,
           "renderer": "flot",
           "x-axis": true,
           "y-axis": true,
-          "scale": 1,
           "y_formats": [
-            "short",
-            "µs"
-          ],
-          "grid": {
-            "max": null,
-            "min": 0,
-            "threshold1": null,
-            "threshold2": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)",
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null
-          },
-          "annotate": {
-            "enable": false
-          },
-          "resolution": 100,
-          "lines": true,
-          "fill": 0,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "legend": {
-            "show": true,
-            "values": false,
-            "min": false,
-            "max": false,
-            "current": false,
-            "total": false,
-            "avg": false
-          },
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "connected",
-          "steppedLine": true,
-          "tooltip": {
-            "value_type": "cumulative",
-            "query_as_alias": true,
-            "shared": false
-          },
-          "targets": [
-            {
-              "target": "aliasByNode(stats.timers.[[Application]].[[Host]].akka-actor.*.mailbox-size.mean, 5)"
-            }
-          ],
-          "aliasColors": {},
-          "title": "Mailbox Size per Actor",
-          "id": 4,
-          "seriesOverrides": [
-            {
-              "alias": "OK-Future",
-              "yaxis": 2
-            }
-          ]
-        },
-        {
-          "span": 6,
-          "editable": true,
-          "type": "graph",
-          "loadingEditor": false,
-          "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_formats": [
-            "ns",
-            "none"
-          ],
-          "grid": {
-            "max": null,
-            "min": 0,
-            "threshold1": null,
-            "threshold2": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)",
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null
-          },
-          "annotate": {
-            "enable": false
-          },
-          "resolution": 100,
-          "lines": true,
-          "fill": 0,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "legend": {
-            "show": true,
-            "values": false,
-            "min": false,
-            "max": false,
-            "current": false,
-            "total": false,
-            "avg": false
-          },
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "null as zero",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "cumulative",
-            "query_as_alias": true,
-            "shared": false
-          },
-          "targets": [
-            {
-              "target": "aliasByNode(stats.timers.[[Application]].[[Host]].akka-actor.*.time-in-mailbox.upper_99, 5)"
-            }
-          ],
-          "aliasColors": {},
-          "title": "Time in Mailbox per Actor",
-          "id": 5,
-          "seriesOverrides": [
-            {
-              "alias": "OK-Future",
-              "yaxis": 2
-            }
-          ]
-        }
-      ],
-      "notice": false
-    },
-    {
-      "title": "Actor Processing Time",
-      "height": "250px",
-      "editable": true,
-      "collapse": false,
-      "collapsable": true,
-      "panels": [
-        {
-          "span": 12,
-          "editable": true,
-          "type": "graph",
-          "loadingEditor": false,
-          "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_formats": [
-            "ns",
-            "µs"
-          ],
-          "grid": {
-            "max": null,
-            "min": 0,
-            "threshold1": null,
-            "threshold2": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)",
-            "thresholdLine": false,
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null
-          },
-          "annotate": {
-            "enable": false
-          },
-          "resolution": 100,
-          "lines": true,
-          "fill": 0,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "legend": {
-            "show": true,
-            "values": true,
-            "min": true,
-            "max": true,
-            "current": false,
-            "total": false,
-            "avg": false
-          },
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "null as zero",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "cumulative",
-            "query_as_alias": true,
-            "shared": false
-          },
-          "targets": [
-            {
-              "target": "aliasByNode(stats.timers.[[Application]].[[Host]].akka-actor.*.processing-time.upper_98, 5)",
-              "hide": false
-            }
-          ],
-          "aliasColors": {},
-          "title": "Processing Time per Actor",
-          "leftYAxisLabel": "Message Count",
-          "rightYAxisLabel": "Processing Time",
-          "id": 6,
-          "seriesOverrides": [
-            {
-              "alias": "user-simple-service-actor processing time",
-              "yaxis": 2
-            }
-          ]
-        }
-      ],
-      "notice": false
-    },
-    {
-      "title": "Trace Metrics Label",
-      "height": "80px",
-      "editable": true,
-      "collapse": false,
-      "collapsable": true,
-      "panels": [
-        {
-          "error": false,
-          "span": 12,
-          "editable": true,
-          "type": "text",
-          "loadingEditor": false,
-          "mode": "markdown",
-          "content": "## Trace Metrics ##",
-          "style": {},
-          "title": "Trace Metrics",
-          "id": 7
-        }
-      ],
-      "notice": false
-    },
-    {
-      "title": "Trace Metrics and Intro",
-      "height": "250px",
-      "editable": true,
-      "collapse": false,
-      "collapsable": true,
-      "panels": [
-        {
-          "span": 8,
-          "editable": true,
-          "type": "graph",
-          "loadingEditor": false,
-          "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_formats": [
-            "short",
+            "none",
             "short"
           ],
           "grid": {
-            "max": null,
-            "min": 0,
-            "threshold1": null,
-            "threshold2": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)",
             "leftMax": null,
             "rightMax": null,
             "leftMin": null,
-            "rightMin": null
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
           },
-          "annotate": {
-            "enable": false
-          },
-          "resolution": 100,
           "lines": true,
           "fill": 0,
-          "linewidth": 2,
+          "linewidth": 1,
           "points": false,
-          "pointradius": 5,
+          "pointradius": 1,
           "bars": false,
           "stack": false,
+          "percentage": false,
           "legend": {
             "show": true,
             "values": false,
@@ -440,84 +120,61 @@
             "total": false,
             "avg": false
           },
-          "percentage": false,
-          "zerofill": true,
           "nullPointMode": "connected",
           "steppedLine": false,
           "tooltip": {
             "value_type": "cumulative",
-            "query_as_alias": true,
             "shared": false
           },
           "targets": [
             {
-              "target": "aliasByNode(stats.timers.[[Application]].[[Host]].trace.*.elapsed-time.count,5)"
+              "target": "stats.gauges.rpi01.cpu.temp"
+            },
+            {
+              "target": "stats.gauges.rpi02.cpu.temp"
+            },
+            {
+              "target": "stats.gauges.rpi03.cpu.temp"
             }
           ],
           "aliasColors": {},
-          "title": "# of Processed Traces",
+          "seriesOverrides": [],
+          "links": [],
+          "leftYAxisLabel": ""
+        },
+        {
+          "title": "docker01 CPU usage",
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "graph",
           "id": 8,
-          "seriesOverrides": []
-        },
-        {
-          "error": false,
-          "span": 4,
-          "editable": true,
-          "type": "text",
-          "loadingEditor": false,
-          "mode": "markdown",
-          "content": "Whether your are manually starting/finishing TraceContexts or letting Kamon do it for you in Spray and Play! applications\nthis section contains metrics about those traces!",
-          "style": {},
-          "title": "Trace Metrics",
-          "id": 9
-        }
-      ],
-      "notice": false
-    },
-    {
-      "title": "Latency and Relative Time per Trace",
-      "height": "250px",
-      "editable": true,
-      "collapse": false,
-      "collapsable": true,
-      "panels": [
-        {
-          "span": 6,
-          "editable": true,
-          "type": "graph",
-          "loadingEditor": false,
           "datasource": null,
           "renderer": "flot",
           "x-axis": true,
           "y-axis": true,
-          "scale": 1,
           "y_formats": [
-            "ns",
+            "percent",
             "short"
           ],
           "grid": {
-            "max": null,
-            "min": 0,
-            "threshold1": null,
-            "threshold2": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)",
             "leftMax": null,
             "rightMax": null,
             "leftMin": null,
-            "rightMin": null
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
           },
-          "annotate": {
-            "enable": false
-          },
-          "resolution": 100,
           "lines": true,
           "fill": 0,
-          "linewidth": 2,
+          "linewidth": 1,
           "points": false,
-          "pointradius": 5,
+          "pointradius": 1,
           "bars": false,
           "stack": false,
+          "percentage": false,
           "legend": {
             "show": true,
             "values": false,
@@ -527,62 +184,324 @@
             "total": false,
             "avg": false
           },
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "null as zero",
+          "nullPointMode": "connected",
           "steppedLine": false,
           "tooltip": {
-            "value_type": "individual",
-            "query_as_alias": true,
+            "value_type": "cumulative",
             "shared": false
           },
           "targets": [
             {
-              "target": "aliasByNode(stats.timers.[[Application]].[[Host]].trace.*.elapsed-time.upper_98, 5)"
+              "target": "stats.gauges.docker01.cpu.percent"
             }
           ],
           "aliasColors": {},
-          "title": "Trace Processing Time",
-          "id": 10,
-          "seriesOverrides": []
-        },
+          "seriesOverrides": [],
+          "links": []
+        }
+      ]
+    },
+    {
+      "title": "New row",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "panels": [
         {
-          "span": 6,
+          "title": "Disk usage",
+          "error": false,
+          "span": 12,
           "editable": true,
           "type": "graph",
-          "loadingEditor": false,
+          "id": 5,
           "datasource": null,
           "renderer": "flot",
           "x-axis": true,
           "y-axis": true,
-          "scale": 1,
+          "y_formats": [
+            "percent",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "lines": true,
+          "fill": 0,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "percentage": false,
+          "legend": {
+            "show": true,
+            "values": false,
+            "min": false,
+            "max": false,
+            "current": false,
+            "total": false,
+            "avg": false
+          },
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "shared": false
+          },
+          "targets": [
+            {
+              "target": "stats.gauges.*.disk.root.percent"
+            }
+          ],
+          "aliasColors": {},
+          "seriesOverrides": [],
+          "links": []
+        }
+      ]
+    },
+    {
+      "title": "New row",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "panels": [
+        {
+          "title": "rpi01 root disk",
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "graph",
+          "id": 4,
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "bytes",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "lines": true,
+          "fill": 0,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "percentage": false,
+          "legend": {
+            "show": true,
+            "values": false,
+            "min": false,
+            "max": false,
+            "current": false,
+            "total": false,
+            "avg": false
+          },
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "shared": false
+          },
+          "targets": [
+            {
+              "target": "stats.gauges.rpi01.disk.root.total"
+            },
+            {
+              "target": "stats.gauges.rpi01.disk.root.free"
+            },
+            {
+              "target": "stats.gauges.rpi01.disk.root.used"
+            }
+          ],
+          "aliasColors": {},
+          "seriesOverrides": [],
+          "links": []
+        },
+        {
+          "title": "rpi02 root disk",
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "graph",
+          "id": 6,
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "bytes",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "lines": true,
+          "fill": 0,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "percentage": false,
+          "legend": {
+            "show": true,
+            "values": false,
+            "min": false,
+            "max": false,
+            "current": false,
+            "total": false,
+            "avg": false
+          },
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "shared": false
+          },
+          "targets": [
+            {
+              "target": "stats.gauges.rpi02.disk.root.total"
+            },
+            {
+              "target": "stats.gauges.rpi02.disk.root.free"
+            },
+            {
+              "target": "stats.gauges.rpi02.disk.root.used"
+            }
+          ],
+          "aliasColors": {},
+          "seriesOverrides": [],
+          "links": []
+        },
+        {
+          "title": "rpi03 root disk",
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "graph",
+          "id": 7,
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "bytes",
+            "short"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "lines": true,
+          "fill": 0,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "percentage": false,
+          "legend": {
+            "show": true,
+            "values": false,
+            "min": false,
+            "max": false,
+            "current": false,
+            "total": false,
+            "avg": false
+          },
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "shared": false
+          },
+          "targets": [
+            {
+              "target": "stats.gauges.rpi03.disk.root.total"
+            },
+            {
+              "target": "stats.gauges.rpi03.disk.root.free"
+            },
+            {
+              "target": "stats.gauges.rpi03.disk.root.used"
+            }
+          ],
+          "aliasColors": {},
+          "seriesOverrides": [],
+          "links": []
+        }
+      ]
+    },
+    {
+      "title": "Row1",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "panels": [
+        {
+          "title": "heartbeat",
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "graph",
+          "id": 1,
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
           "y_formats": [
             "short",
             "short"
           ],
           "grid": {
-            "max": null,
-            "min": 0,
-            "threshold1": null,
-            "threshold2": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)",
             "leftMax": null,
             "rightMax": null,
             "leftMin": null,
-            "rightMin": null
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
           },
-          "annotate": {
-            "enable": false
-          },
-          "resolution": 100,
-          "lines": false,
+          "lines": true,
           "fill": 0,
-          "linewidth": 2,
+          "linewidth": 1,
           "points": false,
           "pointradius": 5,
-          "bars": true,
-          "stack": true,
+          "bars": false,
+          "stack": false,
+          "percentage": false,
           "legend": {
             "show": true,
             "values": false,
@@ -592,34 +511,33 @@
             "total": false,
             "avg": false
           },
-          "percentage": true,
-          "zerofill": true,
-          "nullPointMode": "null as zero",
+          "nullPointMode": "connected",
           "steppedLine": false,
           "tooltip": {
-            "value_type": "individual",
-            "query_as_alias": true,
+            "value_type": "cumulative",
             "shared": false
           },
           "targets": [
             {
-              "target": "aliasByNode(stats.timers.[[Application]].[[Host]].trace.*.elapsed-time.mean,5)"
+              "target": "stats.counters.rpi01.heartbeat.count"
+            },
+            {
+              "target": "stats.counters.rpi02.heartbeat.count"
+            },
+            {
+              "target": "stats.counters.rpi03.heartbeat.count"
             }
           ],
           "aliasColors": {},
-          "title": "Relative time per Trace",
-          "id": 11,
-          "seriesOverrides": []
+          "seriesOverrides": [],
+          "links": []
         }
-      ],
-      "notice": false
+      ]
     }
   ],
   "nav": [
     {
       "type": "timepicker",
-      "collapse": false,
-      "notice": false,
       "enable": true,
       "status": "Stable",
       "time_options": [
@@ -645,60 +563,22 @@
         "2h",
         "1d"
       ],
-      "now": true
+      "now": true,
+      "collapse": false,
+      "notice": false
     }
   ],
   "time": {
-    "from": "now-1h",
+    "from": "now-7d",
     "to": "now"
   },
   "templating": {
-    "list": [
-      {
-        "type": "query",
-        "name": "Application",
-        "query": "stats.timers.*",
-        "includeAll": false,
-        "options": [
-          {
-            "text": "kamon",
-            "value": "kamon"
-          }
-        ],
-        "datasource": null,
-        "allFormat": "glob",
-        "refresh": true,
-        "current": {
-          "text": "kamon",
-          "value": "kamon"
-        }
-      },
-      {
-        "type": "query",
-        "name": "Host",
-        "query": "stats.timers.*.*",
-        "options": [
-          {
-            "text": "ivantopo-desktop",
-            "value": "ivantopo-desktop"
-          }
-        ],
-        "datasource": null,
-        "allFormat": "glob",
-        "refresh": true,
-        "current": {
-          "text": "ivantopo-desktop",
-          "value": "ivantopo-desktop"
-        }
-      }
-    ],
-    "enable": true
-  },
-  "annotations": {
-    "enable": false,
     "list": []
   },
-  "refresh": "5s",
+  "annotations": {
+    "list": []
+  },
+  "refresh": "30s",
   "version": 6,
   "hideAllLegends": false
 }
