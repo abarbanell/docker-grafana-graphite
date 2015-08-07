@@ -65,13 +65,7 @@
           },
           "targets": [
             {
-              "target": "stats.gauges.rpi01.cpu.percent"
-            },
-            {
-              "target": "stats.gauges.rpi02.cpu.percent"
-            },
-            {
-              "target": "stats.gauges.rpi03.cpu.percent"
+              "target": "stats.gauges.*.cpu.percent"
             }
           ],
           "aliasColors": {},
@@ -128,76 +122,13 @@
           },
           "targets": [
             {
-              "target": "stats.gauges.rpi01.cpu.temp"
-            },
-            {
-              "target": "stats.gauges.rpi02.cpu.temp"
-            },
-            {
-              "target": "stats.gauges.rpi03.cpu.temp"
+              "target": "stats.gauges.*.cpu.temp"
             }
           ],
           "aliasColors": {},
           "seriesOverrides": [],
           "links": [],
           "leftYAxisLabel": ""
-        },
-        {
-          "title": "docker01 CPU usage",
-          "error": false,
-          "span": 12,
-          "editable": true,
-          "type": "graph",
-          "id": 8,
-          "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "percent",
-            "short"
-          ],
-          "grid": {
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": null,
-            "threshold2": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
-          "lines": true,
-          "fill": 0,
-          "linewidth": 1,
-          "points": false,
-          "pointradius": 1,
-          "bars": false,
-          "stack": false,
-          "percentage": false,
-          "legend": {
-            "show": true,
-            "values": false,
-            "min": false,
-            "max": false,
-            "current": false,
-            "total": false,
-            "avg": false
-          },
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "cumulative",
-            "shared": false
-          },
-          "targets": [
-            {
-              "target": "stats.gauges.docker01.cpu.percent"
-            }
-          ],
-          "aliasColors": {},
-          "seriesOverrides": [],
-          "links": []
         }
       ]
     },
@@ -258,203 +189,6 @@
           "targets": [
             {
               "target": "stats.gauges.*.disk.root.percent"
-            }
-          ],
-          "aliasColors": {},
-          "seriesOverrides": [],
-          "links": []
-        }
-      ]
-    },
-    {
-      "title": "New row",
-      "height": "250px",
-      "editable": true,
-      "collapse": false,
-      "panels": [
-        {
-          "title": "rpi01 root disk",
-          "error": false,
-          "span": 12,
-          "editable": true,
-          "type": "graph",
-          "id": 4,
-          "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "bytes",
-            "short"
-          ],
-          "grid": {
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": null,
-            "threshold2": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
-          "lines": true,
-          "fill": 0,
-          "linewidth": 1,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "percentage": false,
-          "legend": {
-            "show": true,
-            "values": false,
-            "min": false,
-            "max": false,
-            "current": false,
-            "total": false,
-            "avg": false
-          },
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "cumulative",
-            "shared": false
-          },
-          "targets": [
-            {
-              "target": "stats.gauges.rpi01.disk.root.total"
-            },
-            {
-              "target": "stats.gauges.rpi01.disk.root.free"
-            },
-            {
-              "target": "stats.gauges.rpi01.disk.root.used"
-            }
-          ],
-          "aliasColors": {},
-          "seriesOverrides": [],
-          "links": []
-        },
-        {
-          "title": "rpi02 root disk",
-          "error": false,
-          "span": 12,
-          "editable": true,
-          "type": "graph",
-          "id": 6,
-          "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "bytes",
-            "short"
-          ],
-          "grid": {
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": null,
-            "threshold2": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
-          "lines": true,
-          "fill": 0,
-          "linewidth": 1,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "percentage": false,
-          "legend": {
-            "show": true,
-            "values": false,
-            "min": false,
-            "max": false,
-            "current": false,
-            "total": false,
-            "avg": false
-          },
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "cumulative",
-            "shared": false
-          },
-          "targets": [
-            {
-              "target": "stats.gauges.rpi02.disk.root.total"
-            },
-            {
-              "target": "stats.gauges.rpi02.disk.root.free"
-            },
-            {
-              "target": "stats.gauges.rpi02.disk.root.used"
-            }
-          ],
-          "aliasColors": {},
-          "seriesOverrides": [],
-          "links": []
-        },
-        {
-          "title": "rpi03 root disk",
-          "error": false,
-          "span": 12,
-          "editable": true,
-          "type": "graph",
-          "id": 7,
-          "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "bytes",
-            "short"
-          ],
-          "grid": {
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": null,
-            "threshold2": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
-          "lines": true,
-          "fill": 0,
-          "linewidth": 1,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "percentage": false,
-          "legend": {
-            "show": true,
-            "values": false,
-            "min": false,
-            "max": false,
-            "current": false,
-            "total": false,
-            "avg": false
-          },
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "cumulative",
-            "shared": false
-          },
-          "targets": [
-            {
-              "target": "stats.gauges.rpi03.disk.root.total"
-            },
-            {
-              "target": "stats.gauges.rpi03.disk.root.free"
-            },
-            {
-              "target": "stats.gauges.rpi03.disk.root.used"
             }
           ],
           "aliasColors": {},
@@ -569,7 +303,7 @@
     }
   ],
   "time": {
-    "from": "now-7d",
+    "from": "now-6h",
     "to": "now"
   },
   "templating": {
@@ -582,3 +316,4 @@
   "version": 6,
   "hideAllLegends": false
 }
+
