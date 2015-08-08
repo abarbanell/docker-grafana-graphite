@@ -3,14 +3,14 @@ StatsD + Graphite + Grafana + Kamon Dashboard
 
 This image contains a fork of the Dockerfile
 [kamon-io/docker-grafana-graphite](https://github.com/kamon-io/docker-grafana-graphite)
-which has some modifications to work together with the Raspberry
+and I have made  some modifications to work together with the Raspberry
 Monitoring from [abarbanell/rpym](https://github.com/abarbanell/rpym).
-Even this README file is largely a minor edition of the original from
+Even this README file is just a minor edit of the original from
 the guys at [kamon-io](https://github.com/kamon-io). Thank you for the
 great work!
 
 
-THis image has a sensible default configuration of StatsD, Graphite and
+This image has a sensible default configuration of StatsD, Graphite and
 Grafana, and comes bundled with a example
 dashboard that gives you the basic metrics currently collected by
 [rpym](https://github.com/abarbanell/rpym) for both Raspberry Pi
@@ -21,8 +21,10 @@ two ways for using this image:
 
 ### Using the Docker Index ###
 
-This image is published under [my repository on the Docker Index](https://index.docker.io/u/abarbanell/) and all you
-need as a prerequisite is having Docker installed on your machine. The container exposes the following ports:
+This image is published under [my repository on the Docker
+Index](https://index.docker.io/u/abarbanell/) and all you
+need as a prerequisite is having Docker installed on your machine. The
+container exposes the following ports:
 
 - `80`: the Grafana web interface.
 - `8125`: the StatsD port.
