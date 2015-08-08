@@ -1,4 +1,4 @@
-StatsD + Graphite + Grafana + Kamon Dashboard
+StatsD + Graphite + Grafana + RPYM Dashboard
 ---------------------------------------------
 
 This image contains a fork of the Dockerfile
