@@ -2,7 +2,7 @@
 
 docker kill rpym-grafana-dashboard
 docker rm rpym-grafana-dashboard
-truncate ./logs/* --size 0
+sudo truncate ./logs/* --size 0
 
 docker run -d -v $(pwd)/logs:/var/log/supervisor -v $(pwd)/data:/opt/graphite/storage/whisper -p 80:80 -p 8125:8125/udp -p 8126:8126 --name rpym-grafana-dashboard abarbanell/docker-grafana-graphite
 

@@ -56,7 +56,7 @@ docker run -d -v $(pwd)/logs:/var/log/supervisor -v $(pwd)/data:/opt/graphite/st
 ### Building the image yourself ###
 
 The Dockerfile and supporting configuration files are available in our
-[Github repository](https://github.com/kamon-io/docker-grafana-graphite).
+[Github repository](https://github.com/abarbanell/docker-grafana-graphite).
 This comes specially handy if you want to change any of the StatsD,
 Graphite or Grafana settings, or simply if you want to know how that
 image was built. The repo also has `build` and `start` scripts to make
