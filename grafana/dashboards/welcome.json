@@ -13,6 +13,7 @@
       "title": "New row",
       "height": "250px",
       "editable": true,
+      "collapsable": true,
       "collapse": false,
       "panels": [
         {
@@ -36,7 +37,6 @@
             "leftMin": null,
             "rightMin": null,
             "threshold1": null,
-            "threshold2": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2Color": "rgba(234, 112, 112, 0.22)"
           },
@@ -49,13 +49,13 @@
           "stack": false,
           "percentage": false,
           "legend": {
-            "show": true,
-            "values": false,
-            "min": false,
-            "max": false,
+            "avg": false,
             "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
             "total": false,
-            "avg": false
+            "values": false
           },
           "nullPointMode": "connected",
           "steppedLine": false,
@@ -87,6 +87,17 @@
             "none",
             "short"
           ],
+          "zerofill": true
+        },
+        {
+          "aliasColors": {},
+          "annotate": {
+            "enable": false
+          },
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "fill": 0,
           "grid": {
             "leftMax": null,
             "rightMax": null,
@@ -106,13 +117,13 @@
           "stack": false,
           "percentage": false,
           "legend": {
-            "show": true,
-            "values": false,
-            "min": false,
-            "max": false,
+            "avg": false,
             "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
             "total": false,
-            "avg": false
+            "values": false
           },
           "nullPointMode": "connected",
           "steppedLine": false,
@@ -147,19 +158,88 @@
           "id": 5,
           "datasource": null,
           "renderer": "flot",
+          "resolution": 100,
+          "rightYAxisLabel": "Processing Time",
+          "scale": 1,
+          "seriesOverrides": [
+            {
+              "alias": "user-simple-service-actor processing time",
+              "yaxis": 2
+            }
+          ],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "hide": false,
+              "target": "aliasByNode(scale(stats.timers.$Application.$Host.akka-actor.*.processing-time.mean,0.001),5)"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Processing Time per Actor",
+          "tooltip": {
+            "query_as_alias": true,
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
           "x-axis": true,
           "y-axis": true,
           "y_formats": [
             "percent",
             "short"
           ],
+          "zerofill": true
+        }
+      ],
+      "title": "Actor Processing Time"
+    },
+    {
+      "collapsable": true,
+      "collapse": false,
+      "editable": true,
+      "height": "80px",
+      "notice": false,
+      "panels": [
+        {
+          "content": "## Router Metrics ##",
+          "editable": true,
+          "error": false,
+          "id": 7,
+          "loadingEditor": false,
+          "mode": "markdown",
+          "span": 12,
+          "style": {},
+          "title": "Router Metrics",
+          "type": "text"
+        }
+      ],
+      "title": "Router Metrics label"
+    },
+    {
+      "collapsable": true,
+      "collapse": false,
+      "editable": true,
+      "height": "350px",
+      "notice": false,
+      "panels": [
+        {
+          "aliasColors": {},
+          "annotate": {
+            "enable": false
+          },
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "fill": 0,
           "grid": {
             "leftMax": null,
             "rightMax": null,
             "leftMin": null,
             "rightMin": null,
             "threshold1": null,
-            "threshold2": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
             "threshold2Color": "rgba(234, 112, 112, 0.22)"
           },
@@ -172,15 +252,24 @@
           "stack": false,
           "percentage": false,
           "legend": {
-            "show": true,
-            "values": false,
-            "min": false,
-            "max": false,
+            "avg": false,
             "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
             "total": false,
-            "avg": false
+            "values": false
           },
           "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "resolution": 100,
+          "scale": 1,
+          "seriesOverrides": [],
+          "span": 8,
+          "stack": false,
           "steppedLine": false,
           "tooltip": {
             "value_type": "cumulative",
@@ -237,13 +326,13 @@
           "stack": false,
           "percentage": false,
           "legend": {
-            "show": true,
-            "values": false,
-            "min": false,
-            "max": false,
+            "avg": false,
             "current": false,
+            "max": false,
+            "min": false,
+            "show": true,
             "total": false,
-            "avg": false
+            "values": false
           },
           "nullPointMode": "connected",
           "steppedLine": false,
@@ -273,18 +362,8 @@
     {
       "type": "timepicker",
       "enable": true,
-      "status": "Stable",
-      "time_options": [
-        "5m",
-        "15m",
-        "1h",
-        "6h",
-        "12h",
-        "24h",
-        "2d",
-        "7d",
-        "30d"
-      ],
+      "notice": false,
+      "now": true,
       "refresh_intervals": [
         "5s",
         "10s",

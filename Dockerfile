@@ -1,10 +1,13 @@
-FROM     ubuntu:14.04.1
+FROM     ubuntu:14.04
 
 # ---------------- #
 #   Installation   #
 # ---------------- #
 
+ENV DEBIAN_FRONTEND noninteractive
+
 # Install all prerequisites
+RUN     apt-get -y update
 RUN     apt-get -y install software-properties-common
 RUN     add-apt-repository -y ppa:chris-lea/node.js
 RUN     apt-get -y update
@@ -13,11 +16,8 @@ RUN     apt-get -y install python-django-tagging python-simplejson python-memcac
 
 RUN     pip install Twisted==11.1.0
 RUN     pip install Django==1.5
-
-
-# Install Elasticsearch
-RUN     cd ~ && wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.3.2.deb
-RUN     cd ~ && dpkg -i elasticsearch-1.3.2.deb && rm elasticsearch-1.3.2.deb
+RUN     pip install pytz
+RUN     npm install ini chokidar
 
 # Checkout the stable branches of Graphite, Carbon and Whisper and install from there
 RUN     mkdir /src
@@ -44,20 +44,16 @@ RUN     git clone https://github.com/etsy/statsd.git /src/statsd                
 
 
 # Install Grafana
-RUN     mkdir /src/grafana
-RUN     wget http://grafanarel.s3.amazonaws.com/grafana-1.9.1.tar.gz -O /src/grafana.tar.gz                   &&\
-        tar -xzf /src/grafana.tar.gz -C /src/grafana --strip-components=1 &&\
+RUN     mkdir /src/grafana                                                                                    &&\
+        mkdir /opt/grafana                                                                                    &&\
+        wget https://grafanarel.s3.amazonaws.com/builds/grafana-3.1.1-1470047149.linux-x64.tar.gz -O /src/grafana.tar.gz &&\
+        tar -xzf /src/grafana.tar.gz -C /opt/grafana --strip-components=1                                     &&\
         rm /src/grafana.tar.gz
 
 
 # ----------------- #
 #   Configuration   #
 # ----------------- #
-
-# Configure Elasticsearch
-ADD     ./elasticsearch/run /usr/local/bin/run_elasticsearch
-RUN     chown -R elasticsearch:elasticsearch /var/lib/elasticsearch
-RUN     mkdir -p /tmp/elasticsearch && chown elasticsearch:elasticsearch /tmp/elasticsearch
 
 # Confiure StatsD
 ADD     ./statsd/config.js /src/statsd/config.js
@@ -76,11 +72,14 @@ RUN     chmod 0664 /opt/graphite/storage/graphite.db
 RUN     cd /opt/graphite/webapp/graphite && python manage.py syncdb --noinput
 
 # Configure Grafana
-ADD     ./grafana/config.js /src/grafana/config.js
+ADD     ./grafana/custom.ini /opt/grafana/conf/custom.ini
 
 # Add the default dashboards
 RUN     mkdir /src/dashboards
 ADD     ./grafana/dashboards/* /src/dashboards/
+ADD     ./grafana/set-local-graphite-source.sh /src/
+RUN     mkdir /src/dashboard-loader
+ADD     ./grafana/dashboard-loader/dashboard-loader.js /src/dashboard-loader/
 
 # Configure nginx and supervisord
 ADD     ./nginx/nginx.conf /etc/nginx/nginx.conf
@@ -100,6 +99,9 @@ EXPOSE  8125/udp
 # StatsD Management port
 EXPOSE  8126
 
+# Graphite web port
+EXPOSE 81
+
 
 
 # -------- #
@@ -107,3 +109,4 @@ EXPOSE  8126
 # -------- #
 
 CMD     ["/usr/bin/supervisord"]
+
