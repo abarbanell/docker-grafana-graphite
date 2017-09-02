@@ -1,4 +1,4 @@
-StatsD + Graphite + Grafana 4 + Kamon Dashboards
+StatsD + Graphite + Grafana 4 + RPYM Dashboards
 ---------------------------------------------
 
 This image contains a fork of the Dockerfile
@@ -102,7 +102,7 @@ This comes specially handy if you want to change any of the StatsD,
 Graphite or Grafana settings, or simply if you want to know how that
 image was built. The repo also has `build` and `start` scripts to make
 your workflow more pleasant.
-=======
+
 The Dockerfile and supporting configuration files are available in our [Github repository](https://github.com/kamon-io/docker-grafana-graphite).
 This comes specially handy if you want to change any of the StatsD, Graphite or Grafana settings, or simply if you want
 to know how the image was built.
