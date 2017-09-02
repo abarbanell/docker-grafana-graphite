@@ -10,6 +10,23 @@ Even this README file is just a minor edit of the original from
 the guys at [kamon-io](https://github.com/kamon-io). Thank you for the
 great work!
 
+## Usage
+
+clone this repo, and from the repo main directory: 
+
+```
+./start
+
+```
+
+This will start a new container with restart policy to restart after start of the docker engine. 
+
+You need to make sure that your docker daemon is started at system boot, and voilà - your statsd server 
+will always run. 
+
+
+
+## Original README 
 
 This image has a sensible default configuration of StatsD, Graphite and
 Grafana, and comes bundled with a example
